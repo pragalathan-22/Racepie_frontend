@@ -154,7 +154,8 @@ const Payment = () => {
         razorpay_order_id: paymentData.razorpay_order_id,
         razorpay_payment_id: paymentData.razorpay_payment_id,
         razorpay_signature: paymentData.razorpay_signature,
-        amount: Math.round(orderDetails.total * 100),
+        // amount: Math.round(orderDetails.total * 100),
+        amount: Math.round(parseFloat(orderDetails.total) * 1),
         status: 'success'
       };
 
@@ -272,7 +273,8 @@ const Payment = () => {
   
       // Create Razorpay order
       const response = await axios.post(`${RAZORPAY_CONFIG.BACKEND_URL}/create-razorpay-order/`, {
-        amount: Math.round(orderDetails.total * 100),
+        // amount: Math.round(orderDetails.total * 100),
+        amount: Math.round(parseFloat(orderDetails.total) * 1),
         currency: RAZORPAY_CONFIG.CURRENCY,
         receipt: `receipt_${storedOrder.id}`,
         notes: {
